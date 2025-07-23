@@ -38,7 +38,7 @@ export default function DeleteDialog({ entryId }) {
         }`
       );
     }
-  }, [deletedEntry, isDeleting]);
+  }, [deletedEntry, isDeleting, router]);
 
   const handleDelete = async () => {
     await deleteEntryFn(entryId);

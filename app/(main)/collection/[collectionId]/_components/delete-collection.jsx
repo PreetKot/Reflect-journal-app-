@@ -48,37 +48,38 @@ export default function DeleteCollectionDialog({
   return (
     <AlertDialog open={open} onOpenChange={setOpen}>
       <AlertDialogTrigger asChild>
-        <Button variant="destructive" size="sm" className="gap-2">
+        <Button variant="destructive" size="sm" className="gap-2 bg-gradient-to-r from-red-500 to-pink-500 hover:from-red-600 hover:to-pink-600 shadow-md">
           <Trash2 className="h-4 w-4" />
           Delete
         </Button>
       </AlertDialogTrigger>
 
-      <AlertDialogContent>
+      <AlertDialogContent className="bg-gradient-to-br from-red-50 to-pink-50 border border-red-200">
         <AlertDialogHeader>
-          <AlertDialogTitle>
-            Delete <span className="text-destructive">"{collection.name}"</span>?
+          <AlertDialogTitle className="text-red-800">
+            Delete <span className="text-red-600 font-bold">&quot;{collection.name}&quot;</span>?
           </AlertDialogTitle>
-          <div className="mt-2 text-sm text-muted-foreground space-y-2">
+          <div className="mt-2 text-sm text-red-700 space-y-2">
             <p>This will permanently remove:</p>
-            <ul className="list-disc list-inside">
+            <ul className="list-disc list-inside bg-red-100 p-3 rounded-lg">
               <li>The collection <strong>{collection.name}</strong></li>
               <li>{entriesCount} journal {entriesCount === 1 ? "entry" : "entries"}</li>
             </ul>
-            <p className="font-semibold text-destructive">
-              This action cannot be undone.
+            <p className="font-semibold text-red-800 bg-red-200 p-2 rounded-lg">
+              ⚠️ This action cannot be undone.
             </p>
           </div>
         </AlertDialogHeader>
 
-        <AlertDialogFooter>
-          <AlertDialogCancel disabled={isDeleting}>Cancel</AlertDialogCancel>
+        <AlertDialogFooter className="bg-red-25">
+          <AlertDialogCancel disabled={isDeleting} className="border-gray-300 hover:bg-gray-50">Cancel</AlertDialogCancel>
           <Button
             onClick={handleDelete}
             variant="destructive"
             disabled={isDeleting}
+            className="bg-gradient-to-r from-red-500 to-pink-500 hover:from-red-600 hover:to-pink-600 shadow-md"
           >
-            {isDeleting ? "Deleting..." : "Delete Collection"}
+            {isDeleting ? "Deleting... 🗑️" : "Delete Collection"}
           </Button>
         </AlertDialogFooter>
       </AlertDialogContent>

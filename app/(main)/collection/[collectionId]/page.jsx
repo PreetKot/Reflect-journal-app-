@@ -16,10 +16,10 @@ export default async function CollectionPage({ params }) {
       <div className="space-y-2">
         <div className="flex items-start justify-between">
           <div>
-            <h1 className="text-4xl font-bold gradient-title">
+            <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
               {collectionId === "unorganized"
-                ? "Unorganized Entries"
-                : collection?.name || "Collection"}
+                ? "Unorganized Entries ✨"
+                : `${collection?.name || "Collection"} 📚`}
             </h1>
             {collection?.description && (
               <p className="text-sm text-muted-foreground mt-1">

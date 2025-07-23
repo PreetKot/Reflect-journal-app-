@@ -4,9 +4,6 @@ import {
   Sparkles,
   Lock,
   Calendar,
-  ChevronRight,
-  BarChart2,
-  FileText,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -17,7 +14,6 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import TestimonialCarousel from "@/components/testimonial-carousel";
-import { Skeleton } from "@/components/ui/skeleton";
 import Link from "next/link";
 import { getDailyPrompt } from "@/actions/public";
 import faqs from "@/data/faqs";
@@ -47,107 +43,116 @@ export default async function LandingPage() {
   const advice = await getDailyPrompt();
 
   return (
-  <div className="container mx-auto px-4 pt-20 pb-32">
-    {/* Hero Section */}
-    <section className="text-center space-y-6 max-w-4xl mx-auto">
-      <h1 className="text-6xl md:text-7xl font-serif text-orange-900 leading-tight tracking-tight">
-        Reflect, Write, Grow.
-      </h1>
-      <p className="text-lg md:text-xl text-orange-700">
-        A mindful space for journaling, self-reflection, and personal growth.
-      </p>
-      <div className="mt-10 flex flex-col md:flex-row justify-center gap-4">
-        <Link href="/dashboard">
-          <Button variant="journal" className="px-6 py-4 text-lg rounded-full">
-            Start Journaling <ChevronRight className="h-5 w-5" />
-          </Button>
-        </Link>
-        <Link href="#features">
-          <Button variant="outline" className="px-6 py-4 text-lg rounded-full border-orange-600 text-orange-600 hover:bg-orange-100">
-            Learn More
-          </Button>
-        </Link>
-      </div>
-    </section>
-
-    {/* Glass Prompt */}
-    <div className="relative mt-20 max-w-3xl mx-auto bg-white/30 backdrop-blur-lg border border-orange-100 rounded-xl p-6 shadow-lg">
-      <div className="flex items-center justify-between border-b border-orange-200 pb-3 mb-4">
-        <div className="flex items-center gap-2 text-orange-700 font-medium">
-          <Calendar className="h-5 w-5" /> Today’s Prompt
-        </div>
-        <div className="flex gap-1">
-          <div className="h-2 w-2 bg-orange-300 rounded-full" />
-          <div className="h-2 w-2 bg-orange-400 rounded-full" />
-        </div>
-      </div>
-      {advice ? (
-        <p className="text-lg text-orange-900">{advice}</p>
-      ) : (
-        <div className="space-y-2">
-          <Skeleton className="h-4 w-3/4 bg-orange-100 rounded" />
-          <Skeleton className="h-4 w-full bg-orange-100 rounded" />
-          <Skeleton className="h-4 w-2/3 bg-orange-100 rounded" />
-        </div>
-      )}
-    </div>
-
-    {/* Features */}
-    <section id="features" className="mt-24 grid md:grid-cols-3 gap-8">
-      {features.map((feature, idx) => (
-        <Card key={idx} className="bg-white hover:shadow-xl transition-shadow border border-orange-100 rounded-2xl">
-          <CardContent className="p-6">
-            <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center mb-4">
-              <feature.icon className="h-6 w-6 text-orange-600" />
-            </div>
-            <h3 className="text-xl font-semibold text-orange-900 mb-2">{feature.title}</h3>
-            <p className="text-orange-700 text-sm">{feature.description}</p>
-          </CardContent>
-        </Card>
-      ))}
-    </section>
-
-    {/* Testimonials */}
-    <div className="mt-28">
-      <TestimonialCarousel />
-    </div>
-
-    {/* FAQ */}
-    <div className="mt-24 max-w-3xl mx-auto">
-      <h2 className="text-3xl font-bold text-center text-orange-900 mb-10">
-        Frequently Asked Questions
-      </h2>
-      <Accordion type="single" collapsible className="space-y-2">
-        {faqs.map((faq, idx) => (
-          <AccordionItem key={idx} value={`item-${idx}`}>
-            <AccordionTrigger className="text-lg text-orange-900 font-medium">
-              {faq.q}
-            </AccordionTrigger>
-            <AccordionContent className="text-orange-700">
-              {faq.a}
-            </AccordionContent>
-          </AccordionItem>
-        ))}
-      </Accordion>
-    </div>
-
-    {/* CTA */}
-    <div className="mt-32">
-      <Card className="bg-gradient-to-r from-orange-100 to-amber-100 rounded-3xl shadow-inner">
-        <CardContent className="p-12 text-center">
-          <h2 className="text-3xl font-bold text-orange-900 mb-4">
-            Begin Your Journey with Reflct
-          </h2>
-          <p className="text-orange-700 mb-6">
-            Join a growing community of mindful writers.
+    <div className="bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 min-h-screen">
+      <div className="container mx-auto px-4 pt-16 pb-24">
+        {/* Hero Section */}
+        <section className="text-center space-y-8 max-w-4xl mx-auto">
+          <h1 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent leading-tight">
+            Reflect, Write, Grow
+          </h1>
+          <p className="text-xl text-gray-700 max-w-2xl mx-auto leading-relaxed">
+            A beautiful, intuitive space for journaling and self-reflection. Write your thoughts, track your moods, and grow with intention.
           </p>
-          <Button size="lg" variant="journal" className="rounded-full px-8 py-4 text-lg">
-            Get Started <ChevronRight className="ml-2 h-5 w-5" />
-          </Button>
-        </CardContent>
-      </Card>
-    </div>
-  </div>
-);
+          <div className="flex flex-col sm:flex-row justify-center gap-4 mt-8">
+            <Link href="/dashboard">
+              <Button size="lg" className="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white shadow-lg transform hover:scale-105 transition-all duration-200">
+                Start Writing ✨
+              </Button>
+            </Link>
+            <Link href="#features">
+              <Button variant="outline" size="lg" className="px-8 py-4 border-2 border-blue-300 text-blue-700 hover:bg-blue-50 hover:border-blue-400 transition-colors">
+                Learn More
+              </Button>
+            </Link>
+          </div>
+        </section>
 
+        {/* Daily Prompt */}
+        {advice && (
+          <div className="mt-16 max-w-2xl mx-auto">
+            <div className="bg-gradient-to-r from-blue-100 to-purple-100 border border-blue-200 rounded-xl p-6 shadow-md">
+              <div className="flex items-center gap-2 text-blue-700 font-semibold mb-3">
+                <Calendar className="h-5 w-5 text-purple-600" />
+                Today&apos;s Prompt
+              </div>
+              <p className="text-lg text-gray-800 leading-relaxed">{advice}</p>
+            </div>
+          </div>
+        )}
+
+        {/* Features */}
+        <section id="features" className="mt-20">
+          <h2 className="text-3xl font-bold text-center bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-12">
+            Everything you need to journal mindfully
+          </h2>
+          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            {features.map((feature, idx) => {
+              const colors = [
+                'from-blue-500 to-cyan-500',
+                'from-purple-500 to-pink-500', 
+                'from-green-500 to-emerald-500'
+              ];
+              const bgColors = [
+                'from-blue-50 to-cyan-50',
+                'from-purple-50 to-pink-50',
+                'from-green-50 to-emerald-50'
+              ];
+              return (
+                <Card key={idx} className={`bg-gradient-to-br ${bgColors[idx]} border-0 hover:shadow-lg transform hover:scale-105 transition-all duration-200`}>
+                  <CardContent className="p-6 text-center">
+                    <div className={`w-12 h-12 bg-gradient-to-r ${colors[idx]} rounded-lg flex items-center justify-center mb-4 mx-auto shadow-md`}>
+                      <feature.icon className="h-6 w-6 text-white" />
+                    </div>
+                    <h3 className="text-xl font-semibold text-gray-800 mb-3">{feature.title}</h3>
+                    <p className="text-gray-700">{feature.description}</p>
+                  </CardContent>
+                </Card>
+              );
+            })}
+        </div>
+      </section>
+
+      {/* Testimonials */}
+      <div className="mt-20">
+        <TestimonialCarousel />
+      </div>
+
+        {/* FAQ */}
+        <div className="mt-20 max-w-3xl mx-auto">
+          <h2 className="text-3xl font-bold text-center bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-10">
+            Frequently Asked Questions
+          </h2>
+          <Accordion type="single" collapsible className="space-y-3">
+            {faqs.map((faq, idx) => (
+              <AccordionItem key={idx} value={`item-${idx}`} className="bg-white border border-blue-200 rounded-lg px-4 shadow-sm hover:shadow-md transition-shadow">
+                <AccordionTrigger className="text-lg text-gray-800 font-medium hover:no-underline hover:text-blue-600 transition-colors">
+                {faq.q}
+              </AccordionTrigger>
+              <AccordionContent className="text-gray-600 pb-4">
+                {faq.a}
+              </AccordionContent>
+            </AccordionItem>
+          ))}
+        </Accordion>
+      </div>
+
+        {/* CTA */}
+        <div className="mt-20">
+          <div className="bg-gradient-to-r from-blue-100 via-purple-100 to-indigo-100 rounded-xl p-12 text-center border border-blue-200 shadow-lg">
+            <h2 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-4">
+              Start your journaling journey today
+            </h2>
+            <p className="text-gray-700 mb-8 text-lg">
+              Join thousands of people who use Reflect for mindful writing and personal growth.
+            </p>
+            <Link href="/dashboard">
+              <Button size="lg" className="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white shadow-lg transform hover:scale-105 transition-all duration-200">
+                Get Started Free ✨
+            </Button>
+          </Link>
+        </div>
+      </div>
+    </div>
+    </div>
+  );
 }

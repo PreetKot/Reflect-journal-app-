@@ -103,7 +103,7 @@ export default function JournalEntryPage() {
       setIsEditMode(false);
       fetchDraft();
     }
-  }, [editId]);
+  }, [editId, fetchCollections, fetchDraft, fetchEntry]);
 
   // Handle setting form data from draft
   useEffect(() => {
@@ -129,7 +129,7 @@ export default function JournalEntryPage() {
         collectionId: "",
       });
     }
-  }, [draftData, isEditMode, existingEntry]);
+  }, [draftData, isEditMode, existingEntry, reset]);
 
   // Handle collection creation success
   useEffect(() => {
@@ -139,7 +139,7 @@ export default function JournalEntryPage() {
       setValue("collectionId", createdCollection.id);
       toast.success(`Collection ${createdCollection.name} created!`);
     }
-  }, [createdCollection]);
+  }, [createdCollection, fetchCollections, setValue]);
 
   // Handle successful submission
   useEffect(() => {
@@ -159,7 +159,7 @@ export default function JournalEntryPage() {
         `Entry ${isEditMode ? "updated" : "created"} successfully!`
       );
     }
-  }, [actionResult, actionLoading]);
+  }, [actionResult, actionLoading, isEditMode, router, saveDraftFn]);
 
   const onSubmit = handleSubmit(async (data) => {
     const mood = getMoodById(data.mood);
@@ -198,7 +198,7 @@ export default function JournalEntryPage() {
   return (
     <div className="container mx-auto px-4 py-8">
       <form onSubmit={onSubmit} className="space-y-2  mx-auto">
-        <h1 className="text-5xl md:text-6xl gradient-title">
+        <h1 className="text-4xl md:text-5xl font-bold text-gray-900">
           {isEditMode ? "Edit Entry" : "What's on your mind?"}
         </h1>
 

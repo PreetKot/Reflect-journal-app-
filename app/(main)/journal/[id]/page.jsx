@@ -33,7 +33,7 @@ export default async function JournalEntryPage({ params }) {
           <div className="flex flex-wrap items-center justify-between gap-4">
             <div className="space-y-1">
               <div className="flex items-center gap-2">
-                <h1 className="text-5xl font-bold gradient-title">
+                <h1 className="text-4xl font-bold text-gray-900">
                   {entry.title}
                 </h1>
               </div>
